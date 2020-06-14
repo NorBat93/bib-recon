@@ -8,7 +8,6 @@ import argparse
 import numpy as np
 from imutils.object_detection import non_max_suppression
 
-
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 faceCascade = cv2.CascadeClassifier(
     'haarcascade/haarcascade_frontalface_default.xml')
