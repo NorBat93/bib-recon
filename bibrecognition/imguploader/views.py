@@ -3,6 +3,11 @@ from django.http import HttpResponse
 from .forms import PhotoForm
 from django.http import HttpResponseRedirect
 
+from .models import PhotoManager
+from .models import Photo
+
+# from .functions import test
+
 
 # Create your views here.
 def index(request):
@@ -13,11 +18,17 @@ def index(request):
 def uploadPhotos(request):
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
+        files = request.FILES.getlist('file_field')
         if form.is_valid():
-
-            form.save()
-            # return render(request, print(request.FILES['file_field']))
+            for f in files:
+                photo = Photo.objects.create_photo(1,f,f,'test')
+            # return self.form_valid(form)
             return HttpResponseRedirect('/success/url/')
+        else:
+            # return self.form_invalid(form)
+            # form.save()
+            # return render(request, print(request.FILES['file_field']))
+            return HttpResponseRedirect('/faild/url/')
     else:
         form = PhotoForm()
     return render(request, 'upload.html', {'form': form})
