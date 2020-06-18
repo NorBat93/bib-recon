@@ -71,6 +71,10 @@ def decode_predictions(scores, geometry):
 	return (rects, confidences)
 
 
+def findNumber():
+
+	return 0
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", type=str,

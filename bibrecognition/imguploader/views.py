@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 
 from .models import PhotoManager
 from .models import Photo
+from .models import Competitions
 
 # from .functions import test
 
@@ -18,10 +19,13 @@ def index(request):
 def uploadPhotos(request):
     if request.method == 'POST':
         form = PhotoForm(request.POST, request.FILES)
+        comp = request.POST['zawody']
         files = request.FILES.getlist('file_field')
         if form.is_valid():
             for f in files:
-                photo = Photo.objects.create_photo(1,f,f,'test')
+                zawody = Competitions.objects.get(comp_slug=comp)
+                
+                photo = Photo.objects.create_photo(zawody,f,f,'test')
             # return self.form_valid(form)
             return HttpResponseRedirect('/success/url/')
         else:
