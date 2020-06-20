@@ -6,24 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Photos</title>
 </head>
+<style>
+    body {
+        margin: 0;
+    font-family: sans-serif;
+    }
 
+    .wrapper {
+        padding: 20px;
+        margin: 30px;
+        border: 1px solid #dedede;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    align-items: flex-start;
+
+
+    }
+    form{
+        
+        display: flex;
+        flex-direction: column;
+    align-items: flex-start;
+    }
+    span{
+        display: block;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #009aff;
+    background-color: #97ccff;
+    }
+
+    form label {
+        margin: 20px 0 5px 0;
+        color: #2e2e2e;
+        font-size: 16px;
+        font-family: sans-serif;
+    }
+
+    form input[type=submit] {
+        margin: 25px 0 0 0;
+        color: white;
+        background-color: #0077ff;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+        margin: 30px;
+    }
+
+    li {
+        display: flex;
+        padding: 20px;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    li img {
+        max-width: 250px;
+    }
+
+    li div {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    li div a {
+        padding: 7px 14px;
+        background-color: #0083ff;
+        color: white;
+        font-family: sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
 <body>
     
     {% if foto %}
-    <img src="{{ foto }}" />
-    <p>Znalezione wartości:</p>
-    <span>
-    {% for n in numery %}
-            {{ n }},      
-    {% endfor %}
-    <p>Nowe wartości (po przecinku): </p>
-    <form action="/change/{{ photoid }}" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
+    <div class="wrapper">
+        
+        <img src="{{ foto }}" />
+        <p>Znalezione wartości:</p>
+        <span>
+        {% for n in numery %}
+                {{ n }},      
+        {% endfor %}
+        </span>
+        <p>Nowe wartości (po przecinku): </p>
+        <form action="/change/{{ photoid }}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Zamień">
+        </form>
+    </div>
 
-    </span>
     {% endif %}
 </body>
 

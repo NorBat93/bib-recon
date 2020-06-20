@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RunPhoto</title>
 </head>
-<body>
+<style>
+    div a{
+        padding: 5px 0;
+        display: inline-block;
+        color: #2e2e2e;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 16px;
+    }
+</style>
+<body style="margin: 0px;">
     {% if user.is_authenticated %}
-        Zalogowany 😎 <br />
-        <a href="{% url 'upload' %}">Załaduj zdjęcia</a><br />
-        <a href="{% url 'search' %}">Przeszukaj bazę</a><br />
-        <a href="{% url 'change' %}">Koryguj</a>
+        <p style="width: 100%; background-color: #008eff; color: white; padding: 15px 20px; margin: 0;font-family: sans-serif;">Zalogowany 😎 </p><br />
+        <div style="padding: 20px;border: 1px solid #dedede;
+    border-radius: 10px;
+    margin: 0 30px 0 30px;">
+            <a href="{% url 'upload' %}">Załaduj zdjęcia</a><br />
+            <a href="{% url 'search' %}">Przeszukaj bazę</a><br />
+            <a href="{% url 'change' %}">Koryguj</a>   
+        </div>
+        
     {% else %}
         Gość 🏃‍♀️<br />
         <a href="{% url 'search' %}">Przeszukaj bazę</a>

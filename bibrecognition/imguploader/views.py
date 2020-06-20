@@ -112,6 +112,7 @@ def changePhotos(request):
                     for numer in pm:
                         numery.append(numer.meta_value)
                     meta.append(numery)
+                    meta.append(zdjecie.id)
                     imgMeta.append(meta)
                     
                 return render(request, 'change.html', {'meta': imgMeta})
@@ -160,3 +161,12 @@ def changePhotoID(request, photo):
             return HttpResponseRedirect('/failed/')
 
     return render(request, 'changeid.html', {'photoid':photo,'foto': foto, 'numery': numery, 'form': form})
+
+def ss(request):
+
+    return render(request, 'sukces.html')
+
+
+def ff(request):
+
+    return render(request, 'failed.html')

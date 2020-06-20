@@ -6,13 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Photos</title>
 </head>
+<style>
+     body{
+        margin: 0;
+    }
+    form{
+        padding: 20px;
+        margin: 30px;
+        border: 1px solid #dedede;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 
+
+    }
+    form label{
+        margin: 20px 0 5px 0;
+        color: #2e2e2e;
+        font-size: 16px;
+        font-family: sans-serif;
+    }
+    form input[type=submit]{
+        margin: 25px 0 0 0;
+        color: white;
+        background-color: #0077ff;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
 <body>
     {% if form %}
     <form action="/search" method="post" >
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Submit">
+        <input type="submit" value="Szukaj">
     </form>
     {% endif %}
     {% if foto %}

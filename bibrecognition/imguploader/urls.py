@@ -10,6 +10,8 @@ urlpatterns = [
     path('search', views.searchPhotos, name="search"),
     path('change', views.changePhotos, name="change"),
     path('change/<int:photo>', views.changePhotoID, name="changeid"),
+    path('success/', views.ss, name="ss"),
+    path('failed/', views.ff, name="ff"),
     
 
 
