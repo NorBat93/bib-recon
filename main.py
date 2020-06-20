@@ -169,11 +169,13 @@ for (startX, startY, endX, endY) in boxes:
 results = sorted(results, key=lambda r: r[0][1])
 
 # loop over the results
+
 for ((startX, startY, endX, endY), text) in results:
 	# display the text OCR'd by Tesseract
 	print("OCR TEXT")
 	print("========")
 	print("{}\n".format(text))
+
 
 	# strip out non-ASCII text so we can draw the text on the image
 	# using OpenCV, then draw the text and a bounding box surrounding
@@ -188,3 +190,4 @@ for ((startX, startY, endX, endY), text) in results:
 	# show the output image
 	cv2.imshow("Text Detection", output)
 	cv2.waitKey(0)
+	

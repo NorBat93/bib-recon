@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Photos</title>
+</head>
+
+<body>
+    {% if form %}
+    <form action="/search" method="post" >
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+    {% if foto %}
+    <ul>
+    {% for n in foto %}
+    <li><img src="{{ n }}" /></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>

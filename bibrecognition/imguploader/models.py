@@ -1,8 +1,8 @@
 from django.db import models
 
 class PhotoManager(models.Manager):
-    def create_photo(self, comp_id, name, image, url):
-        photo = self.create(comp_id = comp_id, name = name, image = image, url = url)
+    def create_photo(self, comp_id, name, image):
+        photo = self.create(comp_id = comp_id, name = name, image = image)
 
         return photo
 # Create your models here.
@@ -18,10 +18,15 @@ class Photo(models.Model):
     comp_id = models.ForeignKey(Competitions, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='Zdjecie')
     image = models.ImageField(upload_to='images/', default='placeholder.jpg')
-    url = models.CharField(max_length=50)
+    # url = models.CharField(max_length=50)
     objects = PhotoManager()
 
+    def __str__(self):
+        return self.name
+
+
 class PhotoMeta(models.Model):
+    comp_id = models.ForeignKey(Competitions, on_delete=models.CASCADE, null=True)
     photo_id = models.ForeignKey(Photo, on_delete=models.CASCADE)
     meta_key = models.CharField(max_length=50)
     meta_value = models.CharField(max_length=50)

@@ -7,9 +7,12 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-        Zalogowany 😎
+        Zalogowany 😎 <br />
+        <a href="{% url 'upload' %}">Załaduj zdjęcia</a><br />
+        <a href="{% url 'search' %}">Przeszukaj bazę</a>
     {% else %}
-        Gość 🏃‍♀️
+        Gość 🏃‍♀️<br />
+        <a href="{% url 'search' %}">Przeszukaj bazę</a>
     {% endif %}
 </body>
 </html>
