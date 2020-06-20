@@ -8,19 +8,22 @@
 </head>
 
 <body>
-    {% if form %}
-    <form action="/search" method="post" >
+    
+    {% if foto %}
+    <img src="{{ foto }}" />
+    <p>Znalezione wartości:</p>
+    <span>
+    {% for n in numery %}
+            {{ n }},      
+    {% endfor %}
+    <p>Nowe wartości (po przecinku): </p>
+    <form action="/change/{{ photoid }}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
     </form>
-    {% endif %}
-    {% if foto %}
-    <ul>
-    {% for n in foto %}
-    <li><img src="images/{{ n }}" /></li>
-    {% endfor %}
-    </ul>
+
+    </span>
     {% endif %}
 </body>
 

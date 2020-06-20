@@ -9,7 +9,8 @@
     {% if user.is_authenticated %}
         Zalogowany 😎 <br />
         <a href="{% url 'upload' %}">Załaduj zdjęcia</a><br />
-        <a href="{% url 'search' %}">Przeszukaj bazę</a>
+        <a href="{% url 'search' %}">Przeszukaj bazę</a><br />
+        <a href="{% url 'change' %}">Koryguj</a>
     {% else %}
         Gość 🏃‍♀️<br />
         <a href="{% url 'search' %}">Przeszukaj bazę</a>

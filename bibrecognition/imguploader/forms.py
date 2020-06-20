@@ -11,5 +11,14 @@ class PhotoForm(forms.Form):
 
 class SearchForm(forms.Form):
     zawody = forms.ModelChoiceField(
-        queryset=Competitions.objects.all(),  to_field_name="comp_slug")
+        queryset=Competitions.objects.filter(status="published"),  to_field_name="comp_slug")
     numer = forms.DecimalField(decimal_places=0)
+
+
+class ChangeForm(forms.Form):
+    zawody = forms.ModelChoiceField(
+        queryset=Competitions.objects.all(),  to_field_name="comp_slug")
+
+
+class ChangeIDForm(forms.Form):
+    numerki = forms.CharField()

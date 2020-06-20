@@ -17,7 +17,7 @@ class Competitions(models.Model):
 class Photo(models.Model):
     comp_id = models.ForeignKey(Competitions, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='Zdjecie')
-    image = models.ImageField(upload_to='images/', default='placeholder.jpg')
+    image = models.ImageField(upload_to='./', default='placeholder.jpg')
     # url = models.CharField(max_length=50)
     objects = PhotoManager()
 

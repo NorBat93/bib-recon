@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('upload', views.uploadPhotos, name="upload"),
     path('search', views.searchPhotos, name="search"),
+    path('change', views.changePhotos, name="change"),
+    path('change/<int:photo>', views.changePhotoID, name="changeid"),
     
 
 

@@ -9,17 +9,23 @@
 
 <body>
     {% if form %}
-    <form action="/search" method="post" >
+    <form action="/change" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
     </form>
     {% endif %}
-    {% if foto %}
+    {% if meta %}
     <ul>
-    {% for n in foto %}
-    <li><img src="images/{{ n }}" /></li>
-    {% endfor %}
+        {% for n in meta %}
+        <li><img src="images/{{ n.0 }}" /> 
+            <div>
+                {% for nr in n.1 %}
+                <p>{{ nr }}</p>
+                {% endfor %}
+            </div>
+        </li>
+        {% endfor %}
     </ul>
     {% endif %}
 </body>

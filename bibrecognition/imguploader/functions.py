@@ -72,7 +72,7 @@ def decode_predictions(scores, geometry):
 
 
 def findNumber(url):
-	image = cv2.imread(url)
+	image = cv2.imread("./"+url)
 	orig = image.copy()
 	(origH, origW) = image.shape[:2]
 	(newW, newH) = (320,320)
